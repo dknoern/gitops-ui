@@ -12,8 +12,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: install aws cli and login
       run: |
-        apt-get update && apt-get install -y python3-pip
-        pip3 install -U awscli
-        $(aws ecr get-login --no-include-email --region us-east-1)
+        sudo apt-get update && apt-get install -y python3-pip
+        sudo pip3 install -U awscli
+    - name: login to ecr
+      run: $(aws ecr get-login --no-include-email --region us-east-1)
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
