@@ -10,6 +10,8 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile -t gitops-ui
     - name: Login to ECR
       id: ecr
       uses: jwalton/gh-ecr-login@v1
@@ -17,9 +19,7 @@ jobs:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: us-west-2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile -t gitops-ui
-    - name: Push to ECR
       run: |
         docker tag gitops-ui:latest ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/gitops-ui:latest
         docker push ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/gitops-ui:latest
+        echo "done"
