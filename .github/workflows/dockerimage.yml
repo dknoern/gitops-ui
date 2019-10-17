@@ -5,9 +5,7 @@ on: [push]
 jobs:
 
   build:
- 
     runs-on: ubuntu-latest
- 
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
@@ -23,4 +21,5 @@ jobs:
       run: |
         docker tag gitops-ui:latest 484951121041.dkr.ecr.us-west-2.amazonaws.com/gitops-ui:latest
         docker push 484951121041.dkr.ecr.us-west-2.amazonaws.com/gitops-ui:latest
-        echo "done"
+
+
