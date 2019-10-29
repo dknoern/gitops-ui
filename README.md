@@ -1,6 +1,13 @@
-# GitOps UI
+# gitops-ui
 
-UI Component for GitOps Fargate demp
+Application for demonstration of ECS Fargate and GitOps Actions 
+to provide 100% configuration as code for micro-service infrastrcuture. This repo contains ui code.  
+
+## See also 
+
+- https://github.com/dknoern/gitops-api
+- https://github.com/dknoern/gitops-infra
+
 
 ## Development server
 
